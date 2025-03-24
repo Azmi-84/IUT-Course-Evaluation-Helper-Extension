@@ -1,29 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 .container {
-  max-width: 400px;
-  margin: 0 auto;
+  width: 350px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(135deg, #21273e 0%, #16213e 100%);
+  padding: 15px;
+  color: white;
+  border-bottom: 2px solid #0f172a;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 15px;
   padding: 20px;
+  flex-grow: 1;
 }
 
-p {
-  font-size: 20px;
-  font-weight: bold;
+.form-section {
+  margin-bottom: 20px;
 }
 
-.Title {
-  margin-top: 0;
+.section-title {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #16213e;
 }
 
-form {
-  margin-top: 20px;
+.rating-container {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .radio-group {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -31,56 +75,131 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="radio"]+label {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border: 2px solid #fff;
+input[type="radio"] + label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
+  background-color: #e2e8f0;
+  color: #64748b;
   cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
 }
 
-input[type="radio"]:hover+label {
-  background-color: #585858;
-  color: white;
-  transition: 0.3s ease;
+input[type="radio"]:hover + label {
+  background-color: #cbd5e1;
+  transform: scale(1.05);
 }
 
-input[type="radio"]:checked+label {
-  background-color: #fff;
-  color: #000;
-}
-
-input[type="submit"] {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #fff;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-  background-color: #555;
+input[type="radio"]:checked + label {
+  background-color: #16213e;
   color: #fff;
-}
-
-input[type="submit"]:active {
-  background-color: #222222;  
+  transform: scale(1.1);
+  box-shadow: 0 3px 10px rgba(22, 33, 62, 0.3);
 }
 
 .textbox-container {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .textbox-container input[type="text"] {
   width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.textbox-container input[type="text"]:focus {
+  border-color: #16213e;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(22, 33, 62, 0.2);
+}
+
+.button-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #16213e 0%, #0f172a 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 15px;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.3);
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+footer {
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  border-top: 1px solid #e2e8f0;
+}
+
+.success-message {
+  color: #10b981;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+  animation: fadeIn 0.5s;
+  padding: 8px;
+  background-color: #ecfdf5;
+  border-radius: 4px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid #fff;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
